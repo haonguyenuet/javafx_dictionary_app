@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="510.0" prefWidth="765.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApplication.Controllers.AdditionController">
+    <children>
+        <Pane prefHeight="91.0" prefWidth="769.0" styleClass="header" stylesheets="@../Utils/style.css">
+            <children>
+                <Label layoutX="291.0" layoutY="24.0" prefHeight="30.0" prefWidth="221.0" text="Wish you all the best" textFill="#9f45b0">
+                    <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                    </font>
+                </Label>
+                <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="741.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Utils/icons/icons8_cancel_40px.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="120.0" fitWidth="110.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../Utils/images/logo.png" />
+                    </image>
+                </ImageView>
+            <Label layoutX="288.0" layoutY="46.0" prefHeight="30.0" prefWidth="228.0" text="Chúc bạn mọi điều tốt đẹp" textFill="#9f45b0">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            </children>
+        </Pane>
+        <AnchorPane layoutY="91.0" prefHeight="419.0" prefWidth="769.0">
+            <children>
+                <Pane prefHeight="45.0" prefWidth="769.0" style="-fx-background-color: #44008b; -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
+                    <children>
+                        <Label layoutX="20.0" prefHeight="45.0" prefWidth="240.0" text="Thêm từ vựng mới" textFill="#c67abb">
+                            <font>
+                                <Font name="System Bold Italic" size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../Utils/icons/icons8_add_64px.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Label>
+                    </children>
+                </Pane>
+                <Label layoutX="31.0" layoutY="58.0" text="Từ tiếng anh " textFill="#9f45b0">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Utils/icons/icons8_brick_64px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <TextField fx:id="wordTargetInput" layoutX="31.0" layoutY="92.0" prefHeight="32.0" prefWidth="386.0" promptText="Nhập từ tiếng anh..." styleClass="english-word-input" stylesheets="@../Utils/style.css" />
+                <Label layoutX="30.0" layoutY="130.0" text="Giải nghĩa" textFill="#9f45b0">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Utils/icons/icons8_edit_property_64px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <TextArea fx:id="explanationInput" layoutX="31.0" layoutY="155.0" prefHeight="200.0" prefWidth="386.0" promptText="Nhập giải nghĩa của từ...." styleClass="meaning-input" stylesheets="@../Utils/style.css" />
+                <Button fx:id="addBtn" layoutX="31.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="32.0" prefWidth="60.0" styleClass="add-button" stylesheets="@../Utils/style.css" text="Thêm " />
+            <ImageView fitHeight="297.0" fitWidth="296.0" layoutX="435.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
+               <image>
+                  <Image url="@../Utils/images/hero.jpg" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

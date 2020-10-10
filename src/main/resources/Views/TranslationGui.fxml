@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="510.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApplication.Controllers.TranslationController">
+    <Pane prefHeight="91.0" prefWidth="769.0" styleClass="header" stylesheets="@../Utils/style.css">
+        <children>
+            <Label layoutX="284.0" layoutY="31.0" text="If you want, just do it" textFill="#9f45b0">
+                <font>
+                    <Font name="System Bold Italic" size="20.0" />
+                </font>
+            </Label>
+            <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="741.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../Utils/icons/icons8_cancel_40px.png" />
+                </image>
+            </ImageView>
+            <ImageView fitHeight="120.0" fitWidth="110.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../Utils/images/logo.png" />
+                </image>
+            </ImageView>
+        </children>
+    </Pane>
+    <AnchorPane layoutY="91.0" prefHeight="419.0" prefWidth="769.0">
+        <children>
+            <Pane prefHeight="45.0" prefWidth="769.0" style="-fx-background-color: #44008b; -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
+                <children>
+                    <Label layoutX="20.0" prefHeight="45.0" prefWidth="208.0" text="Phiên dịch " textFill="#c67abb">
+                        <font>
+                            <Font name="System Bold Italic" size="18.0" />
+                        </font>
+                        <graphic>
+                            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../Utils/icons/icons8_google_translate_64px.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Label>
+                </children>
+            </Pane>
+            <Label layoutX="14.0" layoutY="58.0" prefHeight="37.0" prefWidth="168.0" text="English" textFill="#9f45b0">
+                <font>
+                    <Font name="System Bold" size="16.0" />
+                </font>
+            </Label>
+            <TextArea layoutX="14.0" layoutY="96.0" prefHeight="254.0" prefWidth="361.0" promptText="Type.." styleClass="speech-input" stylesheets="@../Utils/style.css" />
+            <TextArea layoutX="393.0" layoutY="96.0" prefHeight="254.0" prefWidth="361.0" styleClass="speech-input" stylesheets="@../Utils/style.css" />
+            <Label layoutX="393.0" layoutY="58.0" prefHeight="37.0" prefWidth="168.0" text="Vietnamese" textFill="#9f45b0">
+                <font>
+                    <Font name="System Bold" size="16.0" />
+                </font>
+            </Label>
+        </children>
+    </AnchorPane>
+</AnchorPane>

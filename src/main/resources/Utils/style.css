@@ -1,0 +1,150 @@
+@font-face {
+    src: url("fonts/Poppins-Regular.ttf"),
+}
+.menu{
+    -fx-background-color: linear-gradient(to bottom left, #44008b, #9f45b0);
+    -fx-padding: 0;
+}
+.menu-item{
+ -fx-background-color: transparent;
+ -fx-text-fill: #ecf0f1;
+ -fx-background-radius: 0;
+
+}
+.menu-item:hover,
+.menu-item:selected{
+ -fx-background-color: #ecf0f1;
+ -fx-text-fill: #8e44ad;
+}
+.header{
+   -fx-background-color: white;
+}
+.search-field{
+  -fx-background-color: #fff;
+  -fx-background-radius: 30 0 0 30;
+  -fx-border-radius: 30 0 0 30;
+  -fx-padding: 0 10 0 10;
+  -fx-text-fill: #9f45b0;
+  -fx-font-family: "Poppins";
+  -fx-font-weight: bold;
+  -fx-font-size: 13;
+  -fx-border-color: #dcdde1;
+}
+.search-field:focused{
+ -fx-effect: dropshadow(three-pass-box,#ced6e0, 10, 0, 0, 0);
+}
+.search-button{
+    -fx-text-fill: #fff;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 11;
+    -fx-background-color: linear-gradient(to left bottom,#44008b, #9f45b0);
+    -fx-effect: dropshadow(three-pass-box, #ced6e0, 10, 0, 0, 0);
+    -fx-background-radius: 0 30 30 0;
+    -fx-border-radius: 0 30 30 0;
+}
+.search-button:pressed{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
+.edit-button, .delete-button, .volume-button, .save-button{
+    -fx-cursor: hand;
+    -fx-text-fill: #9f45b0;
+    -fx-background-color: #fff;
+    -fx-border-color: #a29bfe;
+}
+.edit-button:hover, .delete-button:hover, .volume-button:hover, .save-button:hover{
+    -fx-background-color: #dcdde1;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.explanation-field {
+    -fx-text-fill: #9f45b0;
+    -fx-font-size: 16px;
+    -fx-border-color: #a29bfe;
+}
+
+/* Styling list-cell */
+.list-cell{
+    -fx-text-fill: #9f45b0;
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
+    -fx-padding: 5;
+}
+.list-cell:even {
+    -fx-background-color: white;
+}
+.list-cell:filled:hover,
+.list-cell:filled:selected{
+    -fx-background-color: linear-gradient(to bottom left, #44008b, #9f45b0);
+    -fx-text-fill: white;
+}
+
+/* Styling scroll-bar */
+.list-cell .scroll-bar:horizontal .track,
+.list-cell .scroll-bar:vertical .track ,
+.explanation-field .scroll-bar:horizontal .track,
+.explanation-field .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+}
+.list-cell .scroll-bar:vertical .increment-button ,
+.list-cell .scroll-bar:vertical .decrement-button ,
+.explanation-field .scroll-bar:vertical .increment-button ,
+.explanation-field .scroll-bar:vertical .decrement-button{
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+}
+.list-cell .scroll-bar:horizontal .increment-button ,
+.list-cell .scroll-bar:horizontal .decrement-button ,
+.explanation-field .scroll-bar:horizontal .increment-button ,
+.explanation-field .scroll-bar:horizontal .decrement-button{
+    -fx-background-color:transparent;
+   	-fx-background-radius: 0em;
+   	-fx-padding:0 0 10 0;
+}
+
+.list-cell .scroll-bar .increment-arrow,
+.list-cell .scroll-bar .decrement-arrow,
+.explanation-field .scroll-bar .increment-arrow,
+.explanation-field .scroll-bar .decrement-arrow
+ {
+	-fx-padding:0;
+}
+.list-cell .scroll-bar:vertical .thumb,
+.list-cell .scroll-bar:horizontal .thumb,
+.explanation-field .scroll-bar:vertical .thumb,
+.explanation-field .scroll-bar:horizontal .thumb{
+    -fx-background-color:derive(black,90%);
+   	-fx-background-insets: 2, 0, 0;
+   	-fx-background-radius: 2em;
+}
+/* styling add new word component */
+.english-word-input{
+    -fx-text-fill: #9f45b0;
+    -fx-padding: 5px;
+    -fx-border-color: #9f45b0;
+    -fx-font-size: 14px;
+}
+.meaning-input, .speech-input{
+    -fx-text-fill: #9f45b0;
+    -fx-border-color: #9f45b0;
+    -fx-font-size: 14px;
+}
+.add-button{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
+    -fx-text-fill: #ecf0f1;
+    -fx-background-radius: 5px;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-background-color: linear-gradient(to bottom left, #44008b, #9f45b0);
+    -fx-pref-width: 100px;
+    -fx-pref-height: 30px;
+}
+.add-button:pressed{
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+}
