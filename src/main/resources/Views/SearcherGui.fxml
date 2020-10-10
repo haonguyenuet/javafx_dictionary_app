@@ -122,7 +122,7 @@
                                                 <Tooltip text="Xóa từ này" />
                                             </tooltip>
                                         </Button>
-                                        <Button fx:id="soundBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="volume-button" stylesheets="@../Utils/style.css">
+                                        <Button fx:id="soundBtn" mnemonicParsing="false" onAction="#handleClickSoundBtn" prefHeight="35.0" prefWidth="35.0" styleClass="volume-button" stylesheets="@../Utils/style.css">
                                             <graphic>
                                                 <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
