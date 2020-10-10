@@ -1,0 +1,5 @@
+Hello	Xin chao
+Home	Ngoi nha
+Money	Tien bac
+King	Vua
+Book	Sach vo
