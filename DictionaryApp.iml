@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: net.sf.sociaal:freetts:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:15" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:15" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:15" level="project" />

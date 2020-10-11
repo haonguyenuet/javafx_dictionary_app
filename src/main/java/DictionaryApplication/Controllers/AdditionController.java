@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class AdditionController implements Initializable {
 	DictionaryManagement dictionaryManagement = new DictionaryManagement();
-	private final String path = "Utils/data.txt";
+	private final String path = "src/main/resources/Utils/data.txt";
 
 	@Override
 	public void initialize( URL url , ResourceBundle resourceBundle ) {
