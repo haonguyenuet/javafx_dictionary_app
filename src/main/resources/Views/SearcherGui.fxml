@@ -72,7 +72,7 @@
                         </Pane>
                         <VBox layoutX="8.0" layoutY="59.0" prefHeight="359.0" prefWidth="490.0">
                             <children>
-                                <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="485.0">
+                                <HBox fx:id="headerOfExplanation" alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="485.0">
                                     <children>
                                         <Label fx:id="englishWord" prefHeight="35.0" prefWidth="275.0" text="Home" textFill="#9f45b0">
                                             <font>

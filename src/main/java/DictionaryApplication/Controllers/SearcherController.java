@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
 
 import java.net.URL;
@@ -57,10 +58,13 @@ public class SearcherController implements Initializable {
 		});
 	}
 
+	// list for listView
+	ObservableList<String> list = FXCollections.observableArrayList();
+
 	// click search button
 	@FXML
 	private void handleClickSearchBtn() {
-		ObservableList<String> list = FXCollections.observableArrayList();
+		list.clear();
 		String searchKey = searchTerm.getText().trim();
 		int limit = 0;
 		for (int i = 0; i < dictionary.size() && limit < 15; i++) {
@@ -85,15 +89,19 @@ public class SearcherController implements Initializable {
 	private void handleMouseClickAWord( MouseEvent arg0 ) {
 		// search binary
 		String selectedWord = listResults.getSelectionModel().getSelectedItem();
-		indexOfSelectedWord = dictionaryManagement.searchWord(dictionary , selectedWord);
-		if (indexOfSelectedWord == -1) {
-			return;
-		}
-		englishWord.setText(dictionary.get(indexOfSelectedWord).getWordTarget());
-		explanation.setText(dictionary.get(indexOfSelectedWord).getWordExplain());
+		if (selectedWord != null) {
+			indexOfSelectedWord = dictionaryManagement.searchWord(dictionary , selectedWord);
+			if (indexOfSelectedWord == -1) {
+				return;
+			}
+			englishWord.setText(dictionary.get(indexOfSelectedWord).getWordTarget());
+			explanation.setText(dictionary.get(indexOfSelectedWord).getWordExplain());
 
-		explanation.setEditable(false);
-		saveBtn.setVisible(false);
+			headerOfExplanation.setVisible(true);
+			explanation.setVisible(true);
+			explanation.setEditable(false);
+			saveBtn.setVisible(false);
+		}
 	}
 
 	// click edit button
@@ -126,6 +134,17 @@ public class SearcherController implements Initializable {
 		showAlertWarning();
 	}
 
+	private void refreshAfterDeleting() {
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).equals(englishWord.getText())) {
+				list.remove(i);
+				break;
+			}
+		}
+		listResults.setItems(list);
+		headerOfExplanation.setVisible(false);
+		explanation.setVisible(false);
+	}
 
 	// Alerts
 	private void showAlertNotFound() {
@@ -182,6 +201,7 @@ public class SearcherController implements Initializable {
 		Optional<ButtonType> option = alert.showAndWait();
 		if (option.get() == ButtonType.OK) {
 			dictionaryManagement.deleteWord(dictionary , indexOfSelectedWord , path);
+			refreshAfterDeleting();
 			showAlertInfo("Xóa thành công");
 		} else if (option.get() == ButtonType.CANCEL) {
 			showAlertInfo("Thay đổi không được công nhận");
@@ -210,4 +230,7 @@ public class SearcherController implements Initializable {
 
 	@FXML
 	private ListView<String> listResults;
+
+	@FXML
+	private HBox headerOfExplanation;
 }
