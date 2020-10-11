@@ -25,6 +25,8 @@ public class SearcherController implements Initializable {
 	DictionaryManagement dictionaryManagement = new DictionaryManagement();
 	private int indexOfSelectedWord;
 	private final String path = "src/main/resources/Utils/data.txt";
+	// list for listView
+	ObservableList<String> list = FXCollections.observableArrayList();
 
 	@Override
 	public void initialize( URL url , ResourceBundle resourceBundle ) {
@@ -32,8 +34,9 @@ public class SearcherController implements Initializable {
 		// random initial word list and definition are displayed
 		int index = (int) (Math.random() * (dictionary.size()));
 		for (int i = index; i < index + 15; i++) {
-			listResults.getItems().add(dictionary.get(i).getWordTarget());
+			list.add(dictionary.get(i).getWordTarget());
 		}
+		listResults.setItems(list);
 		englishWord.setText(dictionary.get(index).getWordTarget());
 		explanation.setText(dictionary.get(index).getWordExplain());
 		// initial state
@@ -57,9 +60,6 @@ public class SearcherController implements Initializable {
 			System.exit(0);
 		});
 	}
-
-	// list for listView
-	ObservableList<String> list = FXCollections.observableArrayList();
 
 	// click search button
 	@FXML
