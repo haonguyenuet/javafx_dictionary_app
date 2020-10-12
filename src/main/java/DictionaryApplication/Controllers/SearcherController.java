@@ -1,5 +1,6 @@
 package DictionaryApplication.Controllers;
 
+import DictionaryApplication.Alerts.Alerts;
 import DictionaryApplication.DictionaryCommandLine.Dictionary;
 import DictionaryApplication.DictionaryCommandLine.DictionaryManagement;
 import com.sun.speech.freetts.Voice;
@@ -21,12 +22,14 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SearcherController implements Initializable {
-	Dictionary dictionary = new Dictionary();
-	DictionaryManagement dictionaryManagement = new DictionaryManagement();
+	private Dictionary dictionary = new Dictionary();
+	private DictionaryManagement dictionaryManagement = new DictionaryManagement();
 	private int indexOfSelectedWord;
 	private final String path = "src/main/resources/Utils/data.txt";
 	// list for listView
 	ObservableList<String> list = FXCollections.observableArrayList();
+	// alerts
+	private Alerts alerts = new Alerts();
 
 	@Override
 	public void initialize( URL url , ResourceBundle resourceBundle ) {
@@ -75,7 +78,7 @@ public class SearcherController implements Initializable {
 			}
 		}
 		if (list.isEmpty()) {
-			showAlertNotFound();
+			alerts.showAlertWarning("Not found" , "Rất tiếc từ điển không cung cấp từ này.");
 		} else {
 			headerList.setText("Kết quả liên quan");
 			listResults.setItems(list);
@@ -96,7 +99,7 @@ public class SearcherController implements Initializable {
 			}
 			englishWord.setText(dictionary.get(indexOfSelectedWord).getWordTarget());
 			explanation.setText(dictionary.get(indexOfSelectedWord).getWordExplain());
-
+			// update status
 			headerOfExplanation.setVisible(true);
 			explanation.setVisible(true);
 			explanation.setEditable(false);
@@ -104,12 +107,12 @@ public class SearcherController implements Initializable {
 		}
 	}
 
-	// click edit button
 	@FXML
 	private void handleClickEditBtn() {
+		// update status
 		explanation.setEditable(true);
 		saveBtn.setVisible(true);
-		showAlertInfo("Bạn đã cho phép chỉnh sửa nghĩa từ này!");
+		alerts.showAlertInfo("Information" , "Bạn đã cho phép chỉnh sửa nghĩa từ này!");
 	}
 
 	@FXML
@@ -126,12 +129,33 @@ public class SearcherController implements Initializable {
 
 	@FXML
 	private void handleClickSaveBtn() {
-		showAlertConfirmation();
+		Alert alertConfirmation = alerts.alertConfirmation("Update" ,
+				"Bạn chắc chắn muốn cập nhật từ này??");
+		// option != null.
+		Optional<ButtonType> option = alertConfirmation.showAndWait();
+		if (option.get() == ButtonType.OK) {
+			dictionaryManagement.updateWord(dictionary , indexOfSelectedWord , explanation.getText() , path);
+			// successfully
+			alerts.showAlertInfo("Information" , "Cập nhập thành công!");
+		} else if (option.get() == ButtonType.CANCEL) {
+			alerts.showAlertInfo("Information" , "Thay đổi không được công nhận!");
+		}
 	}
 
 	@FXML
 	private void handleClickDeleteBtn() {
-		showAlertWarning();
+		Alert alertWarning = alerts.alertWarning("Delete" , "Bạn chắc chắn muốn xóa từ này?");
+		// option != null.
+		Optional<ButtonType> option = alertWarning.showAndWait();
+		if (option.get() == ButtonType.OK) {
+			dictionaryManagement.deleteWord(dictionary , indexOfSelectedWord , path);
+			// refresh after deleting word
+			refreshAfterDeleting();
+			// successfully
+			alerts.showAlertInfo("Information" , "Xóa thành công");
+		} else if (option.get() == ButtonType.CANCEL) {
+			alerts.showAlertInfo("Information" , "Thay đổi không được công nhận");
+		}
 	}
 
 	private void refreshAfterDeleting() {
@@ -142,72 +166,10 @@ public class SearcherController implements Initializable {
 			}
 		}
 		listResults.setItems(list);
+		// update status
 		headerOfExplanation.setVisible(false);
 		explanation.setVisible(false);
 	}
-
-	// Alerts
-	private void showAlertNotFound() {
-		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setTitle("Not found");
-
-		// Header Text: null
-		alert.setHeaderText(null);
-		alert.setContentText("Rất tiếc. Từ điển hiện tại không cung cấp từ này!");
-
-		alert.showAndWait();
-	}
-
-	private void showAlertInfo( String content ) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		alert.setTitle("Information");
-
-		// Header Text: null
-		alert.setHeaderText(null);
-		alert.setContentText(content);
-
-		alert.showAndWait();
-	}
-
-	private void showAlertConfirmation() {
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle("Update word");
-
-		// Header Text: null
-		alert.setHeaderText(null);
-		alert.setContentText("Bạn chắc chắn muốn cập nhật từ này?");
-		// option != null.
-		Optional<ButtonType> option = alert.showAndWait();
-		if (option.get() == ButtonType.OK) {
-			dictionaryManagement.updateWord(dictionary , indexOfSelectedWord , explanation.getText() , path);
-			showAlertInfo("Cập nhập thành công");
-		} else if (option.get() == ButtonType.CANCEL) {
-			showAlertInfo("Thay đổi không được công nhận");
-		}
-	}
-
-	private void showAlertWarning() {
-		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setTitle("Delete word");
-
-		// Header Text: null
-		alert.setHeaderText(null);
-		alert.setContentText("Bạn chắc chắn muốn xóa từ này?");
-
-		alert.getButtonTypes().clear();
-		alert.getButtonTypes().addAll(ButtonType.OK , ButtonType.CANCEL);
-
-		// option != null.
-		Optional<ButtonType> option = alert.showAndWait();
-		if (option.get() == ButtonType.OK) {
-			dictionaryManagement.deleteWord(dictionary , indexOfSelectedWord , path);
-			refreshAfterDeleting();
-			showAlertInfo("Xóa thành công");
-		} else if (option.get() == ButtonType.CANCEL) {
-			showAlertInfo("Thay đổi không được công nhận");
-		}
-	}
-
 
 	// FXML elements
 	@FXML
@@ -220,13 +182,10 @@ public class SearcherController implements Initializable {
 	private ImageView closeBtn;
 
 	@FXML
-	private Label englishWord;
+	private Label englishWord, headerList;
 
 	@FXML
 	private TextArea explanation;
-
-	@FXML
-	private Label headerList;
 
 	@FXML
 	private ListView<String> listResults;
