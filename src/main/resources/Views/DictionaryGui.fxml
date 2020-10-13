@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -81,7 +79,7 @@
                     </tooltip>
                 </Button>
             <Pane prefHeight="332.0" prefWidth="54.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+            <Button fx:id="helpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleOnClickHelpButton" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

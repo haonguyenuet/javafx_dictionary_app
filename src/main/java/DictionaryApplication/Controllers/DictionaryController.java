@@ -1,5 +1,6 @@
 package DictionaryApplication.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,6 +52,15 @@ public class DictionaryController implements Initializable {
 		try {
 			AnchorPane Component = FXMLLoader.load(getClass().getResource("/Views/TranslationGui.fxml"));
 			setNode(Component);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	void handleOnClickHelpButton(ActionEvent event) {
+		try {
+			AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/Views/HelpGui.fxml"));
+			setNode(anchorPane);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
