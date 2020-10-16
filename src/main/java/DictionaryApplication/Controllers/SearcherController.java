@@ -3,10 +3,12 @@ package DictionaryApplication.Controllers;
 import DictionaryApplication.Alerts.Alerts;
 import DictionaryApplication.DictionaryCommandLine.Dictionary;
 import DictionaryApplication.DictionaryCommandLine.DictionaryManagement;
+import DictionaryApplication.DictionaryCommandLine.Word;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 
 import java.net.URL;
@@ -33,31 +36,42 @@ public class SearcherController implements Initializable {
 
 	@Override
 	public void initialize( URL url , ResourceBundle resourceBundle ) {
+		// get data for dictionary from data.txt file
 		dictionaryManagement.insertFromFile(dictionary , path);
-		// random initial word list and definition are displayed
-		int index = (int) (Math.random() * (dictionary.size()));
-		for (int i = index; i < index + 15; i++) {
-			list.add(dictionary.get(i).getWordTarget());
-		}
-		listResults.setItems(list);
-		englishWord.setText(dictionary.get(index).getWordTarget());
-		explanation.setText(dictionary.get(index).getWordExplain());
-		// initial state
-		explanation.setEditable(false);
-		saveBtn.setVisible(false);
-		searchBtn.setDisable(true);
+		System.out.println(dictionary.size());
+		// set initial word list and definition are displayed
+		setListDefault();
+		englishWord.setText(dictionary.get(0).getWordTarget());
+		explanation.setText(dictionary.get(0).getWordExplain());
 		// when user types in search field
 		searchTerm.setOnKeyTyped(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle( KeyEvent keyEvent ) {
 				if (searchTerm.getText().isEmpty()) {
-					searchBtn.setDisable(true);
+					cancelBtn.setVisible(false);
+					setListDefault();
 				} else {
-					searchBtn.setDisable(false);
+					cancelBtn.setVisible(true);
+					handleOnKeyTyped();
 				}
 			}
 		});
-		headerList.setText("15 Từ ngẫu nhiên");
+		// when click on cancel button
+		cancelBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle( ActionEvent event ) {
+				searchTerm.clear();
+				notAvailableAlert.setVisible(false);
+				cancelBtn.setVisible(false);
+				setListDefault();
+			}
+		});
+		// initial state
+		explanation.setEditable(false);
+		saveBtn.setVisible(false);
+		cancelBtn.setVisible(false);
+		notAvailableAlert.setVisible(false);
+		headerList.setText("15 Từ đầu tiên");
 		// close app
 		closeBtn.setOnMouseClicked(e -> {
 			System.exit(0);
@@ -66,25 +80,18 @@ public class SearcherController implements Initializable {
 
 	// click search button
 	@FXML
-	private void handleClickSearchBtn() {
+	private void handleOnKeyTyped() {
 		list.clear();
 		String searchKey = searchTerm.getText().trim();
-		int limit = 0;
-		for (int i = 0; i < dictionary.size() && limit < 15; i++) {
-			String englishWord = dictionary.get(i).getWordTarget();
-			if (englishWord.toLowerCase().startsWith(searchKey.toLowerCase())) {
-				list.add(englishWord);
-				++limit;
-			}
-		}
+		list = dictionaryManagement.lookupWord(dictionary , searchKey);
 		if (list.isEmpty()) {
-			alerts.showAlertWarning("Not found" , "Rất tiếc từ điển không cung cấp từ này.");
+			notAvailableAlert.setVisible(true);
+			setListDefault();
 		} else {
+			notAvailableAlert.setVisible(false);
 			headerList.setText("Kết quả liên quan");
 			listResults.setItems(list);
 		}
-		//reset input
-		searchTerm.clear();
 	}
 
 	// click a word in word list is found
@@ -130,7 +137,7 @@ public class SearcherController implements Initializable {
 	@FXML
 	private void handleClickSaveBtn() {
 		Alert alertConfirmation = alerts.alertConfirmation("Update" ,
-				"Bạn chắc chắn muốn cập nhật từ này??");
+				"Bạn chắc chắn muốn cập nhật nghĩa từ này??");
 		// option != null.
 		Optional<ButtonType> option = alertConfirmation.showAndWait();
 		if (option.get() == ButtonType.OK) {
@@ -140,6 +147,9 @@ public class SearcherController implements Initializable {
 		} else if (option.get() == ButtonType.CANCEL) {
 			alerts.showAlertInfo("Information" , "Thay đổi không được công nhận!");
 		}
+		// update status
+		saveBtn.setVisible(false);
+		explanation.setEditable(false);
 	}
 
 	@FXML
@@ -148,8 +158,9 @@ public class SearcherController implements Initializable {
 		// option != null.
 		Optional<ButtonType> option = alertWarning.showAndWait();
 		if (option.get() == ButtonType.OK) {
+			// delete selected word from dictionary
 			dictionaryManagement.deleteWord(dictionary , indexOfSelectedWord , path);
-			// refresh after deleting word
+			// refresh everything after deleting word
 			refreshAfterDeleting();
 			// successfully
 			alerts.showAlertInfo("Information" , "Xóa thành công");
@@ -170,22 +181,31 @@ public class SearcherController implements Initializable {
 		headerOfExplanation.setVisible(false);
 		explanation.setVisible(false);
 	}
-
+	private void setListDefault(){
+		list.clear();
+		for (int i = 0; i < 15; i++) {
+			list.add(dictionary.get(i).getWordTarget());
+		}
+		listResults.setItems(list);
+	}
 	// FXML elements
 	@FXML
 	private TextField searchTerm;
 
 	@FXML
-	private Button searchBtn, saveBtn;
+	private Button  saveBtn,cancelBtn;
 
 	@FXML
 	private ImageView closeBtn;
 
 	@FXML
-	private Label englishWord, headerList;
+	private Label englishWord, headerList, notAvailableAlert;
 
 	@FXML
 	private TextArea explanation;
+
+	@FXML
+	private Pane searchBox;
 
 	@FXML
 	private ListView<String> listResults;
