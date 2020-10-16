@@ -1,5 +1,6 @@
 package DictionaryApplication.DictionaryCommandLine;
 
+import DictionaryApplication.Trie.Trie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.*;
@@ -7,6 +8,7 @@ import java.io.*;
 import java.util.*;
 
 public class DictionaryManagement {
+	private Trie trie = new Trie();
 	/**
 	 * Insert from text file use BufferedReader
 	 */
@@ -61,16 +63,12 @@ public class DictionaryManagement {
 	public ObservableList<String> lookupWord( Dictionary dictionary , String key ) {
 		ObservableList<String> list = FXCollections.observableArrayList();
 		try {
-			int limit = 0;
-			for (int i = 0; i < dictionary.size() && limit < 15; i++) {
-				String englishWord = dictionary.get(i).getWordTarget();
-				if (englishWord.toLowerCase().startsWith(key.toLowerCase())) {
-					list.add(englishWord);
-					++limit;
-				}
+			List<String> results = trie.autoComplete(key);
+			for (int i = 0; i < 15; i++) {
+				list.add(results.get(i));
 			}
 		} catch (Exception e) {
-			System.out.println("Something went wrong: " + e);
+
 		}
 		return list;
 	}
@@ -144,5 +142,15 @@ public class DictionaryManagement {
 				System.err.println(e);
 			}
 		}).start();
+	}
+	// insert dictionary to trie
+	public void setTrie(Dictionary dictionary){
+		try{
+			for(Word word : dictionary){
+				trie.insert(word.getWordTarget());
+			}
+		}catch (NullPointerException e){
+			System.out.println("Something went wrong: " + e);
+		}
 	}
 }
