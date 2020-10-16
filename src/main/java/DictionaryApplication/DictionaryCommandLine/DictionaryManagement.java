@@ -1,5 +1,7 @@
 package DictionaryApplication.DictionaryCommandLine;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.io.*;
 
 import java.util.*;
@@ -29,7 +31,7 @@ public class DictionaryManagement {
 						break;
 					}
 				}
-				word.setWordExplain(meaning);
+				word.setWordExplain(meaning.trim());
 				dictionary.add(word);
 			}
 			// close file
@@ -43,28 +45,34 @@ public class DictionaryManagement {
 
 	public void exportToFile( Dictionary dictionary , String path ) {
 		try {
-			Map<String, Word> map = new HashMap<String, Word>();
-			for (Word word : dictionary) {
-				String key = word.getWordTarget();
-				if (!map.containsKey(key)) {
-					map.put(key , word);
-				}
-			}
-			Collection<Word> unique = map.values();
-			dictionary.clear();
-			dictionary.addAll(unique);
-			dictionary.sort(new SortDictionaryByWord());
-
 			FileWriter fileWriter = new FileWriter(path);
 			BufferedWriter buf = new BufferedWriter(fileWriter);
 			// write to file from current dictionary
 			for (Word word : dictionary) {
 				buf.write("|" + word.getWordTarget() + "\n" + word.getWordExplain());
+				buf.newLine();
 			}
 			buf.close();
 		} catch (Exception e) {
 			System.out.println("Something went wrong: " + e);
 		}
+	}
+
+	public ObservableList<String> lookupWord( Dictionary dictionary , String key ) {
+		ObservableList<String> list = FXCollections.observableArrayList();
+		try {
+			int limit = 0;
+			for (int i = 0; i < dictionary.size() && limit < 15; i++) {
+				String englishWord = dictionary.get(i).getWordTarget();
+				if (englishWord.toLowerCase().startsWith(key.toLowerCase())) {
+					list.add(englishWord);
+					++limit;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Something went wrong: " + e);
+		}
+		return list;
 	}
 
 	/**
@@ -94,7 +102,6 @@ public class DictionaryManagement {
 		}
 		return -1;
 	}
-//    public int searchWordByTrie(String)
 
 	public void updateWord( Dictionary dictionary , int index , String meaning , String path ) {
 		try {
@@ -117,11 +124,25 @@ public class DictionaryManagement {
 	public void addWord( Word word , String path ) {
 		try (FileWriter fileWriter = new FileWriter(path , true);
 			 BufferedWriter buf = new BufferedWriter(fileWriter)) {
-			buf.write("\n" + "|" + word.getWordTarget() + "\n" + word.getWordExplain());
+			 buf.write("|" + word.getWordTarget() + "\n" + word.getWordExplain());
+			 buf.newLine();
 		} catch (IOException e) {
 			System.out.println("IOException.");
 		} catch (NullPointerException e) {
 			System.out.println("Null Exception.");
 		}
+	}
+
+	// async
+	public void setTimeout(Runnable runnable, int delay){
+		new Thread(() -> {
+			try {
+				Thread.sleep(delay);
+				runnable.run();
+			}
+			catch (Exception e){
+				System.err.println(e);
+			}
+		}).start();
 	}
 }
