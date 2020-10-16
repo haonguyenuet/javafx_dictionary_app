@@ -1,5 +1,7 @@
 package DictionaryApplication.DictionaryCommandLine;
 
+import java.util.Objects;
+
 public class Word {
     //    props
     private String wordTarget;
@@ -33,13 +35,23 @@ public class Word {
     }
 
     @Override
-    public boolean equals( Object obj ) {
-        boolean result = false;
-        if (obj instanceof Word) {
-            Word temp = (Word) obj;
-            result = this.getWordTarget().equals(temp.getWordTarget())
-                    && this.getWordExplain().equals(temp.getWordExplain());
-        }
-        return result;
+    public boolean equals( Object o ) {
+        if (this == o) return true;
+        if (!(o instanceof Word)) return false;
+        Word word = (Word) o;
+        return Objects.equals(wordTarget , word.wordTarget);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(wordTarget , wordExplain);
+    }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "wordTarget='" + wordTarget + '\'' +
+                ", wordExplain='" + wordExplain + '\'' +
+                '}';
     }
 }
