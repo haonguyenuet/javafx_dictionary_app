@@ -105,13 +105,13 @@ public class TranslationController implements Initializable {
 		sourceLangField.clear();
 		toLangField.clear();
 		if(isToVietnameseLang){
-			englishLabel.setLayoutX(365);
-			vietnameseLabel.setLayoutX(95);
+			englishLabel.setLayoutX(426);
+			vietnameseLabel.setLayoutX(104);
 			sourceLanguage = "vi";
 			toLanguage = "en";
 		}else {
-			englishLabel.setLayoutX(92);
-			vietnameseLabel.setLayoutX(365);
+			englishLabel.setLayoutX(100);
+			vietnameseLabel.setLayoutX(426);
 			sourceLanguage = "en";
 			toLanguage = "vi";
 		}

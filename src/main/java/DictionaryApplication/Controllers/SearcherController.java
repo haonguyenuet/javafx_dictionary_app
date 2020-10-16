@@ -3,7 +3,6 @@ package DictionaryApplication.Controllers;
 import DictionaryApplication.Alerts.Alerts;
 import DictionaryApplication.DictionaryCommandLine.Dictionary;
 import DictionaryApplication.DictionaryCommandLine.DictionaryManagement;
-import DictionaryApplication.DictionaryCommandLine.Word;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 import javafx.collections.FXCollections;
@@ -38,7 +37,8 @@ public class SearcherController implements Initializable {
 	public void initialize( URL url , ResourceBundle resourceBundle ) {
 		// get data for dictionary from data.txt file
 		dictionaryManagement.insertFromFile(dictionary , path);
-		System.out.println(dictionary.size());
+		// set data for trie
+		dictionaryManagement.setTrie(dictionary);
 		// set initial word list and definition are displayed
 		setListDefault();
 		englishWord.setText(dictionary.get(0).getWordTarget());
@@ -71,7 +71,6 @@ public class SearcherController implements Initializable {
 		saveBtn.setVisible(false);
 		cancelBtn.setVisible(false);
 		notAvailableAlert.setVisible(false);
-		headerList.setText("15 Từ đầu tiên");
 		// close app
 		closeBtn.setOnMouseClicked(e -> {
 			System.exit(0);
@@ -182,6 +181,7 @@ public class SearcherController implements Initializable {
 		explanation.setVisible(false);
 	}
 	private void setListDefault(){
+		headerList.setText("15 Từ đầu tiên");
 		list.clear();
 		for (int i = 0; i < 15; i++) {
 			list.add(dictionary.get(i).getWordTarget());
@@ -203,9 +203,6 @@ public class SearcherController implements Initializable {
 
 	@FXML
 	private TextArea explanation;
-
-	@FXML
-	private Pane searchBox;
 
 	@FXML
 	private ListView<String> listResults;

@@ -47,9 +47,9 @@
                     </Label>
                 </children>
             </Pane>
-         <Pane layoutX="83.0" layoutY="80.0" prefHeight="57.0" prefWidth="565.0" styleClass="header-translate" stylesheets="@../Utils/style.css">
+         <Pane layoutX="65.0" layoutY="80.0" prefHeight="57.0" prefWidth="645.0" styleClass="header-translate" stylesheets="@../Utils/style.css">
             <children>
-                  <Label fx:id="englishLabel" layoutX="95.0" layoutY="14.0" prefHeight="37.0" prefWidth="100.0" text="English" textFill="#c67abb">
+                  <Label fx:id="englishLabel" layoutX="104.0" layoutY="13.0" prefHeight="37.0" prefWidth="100.0" text="English" textFill="#c67abb">
                       <font>
                           <Font name="System Bold" size="16.0" />
                       </font>
@@ -61,7 +61,7 @@
                      </ImageView>
                   </graphic>
                   </Label>
-                  <Label fx:id="vietnameseLabel" layoutX="365.0" layoutY="14.0" prefHeight="37.0" prefWidth="130.0" text="Vietnamese" textFill="#c67abb">
+                  <Label fx:id="vietnameseLabel" layoutX="426.0" layoutY="14.0" prefHeight="37.0" prefWidth="130.0" text="Vietnamese" textFill="#c67abb">
                       <font>
                           <Font name="System Bold" size="16.0" />
                       </font>
@@ -73,7 +73,7 @@
                      </ImageView>
                   </graphic>
                   </Label>
-               <Button fx:id="switchToggle" layoutX="265.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleOnClickSwitchToggle" styleClass="switch-button" stylesheets="@../Utils/style.css">
+               <Button fx:id="switchToggle" layoutX="302.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleOnClickSwitchToggle" styleClass="switch-button" stylesheets="@../Utils/style.css">
                   <graphic>
                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -84,9 +84,9 @@
                </Button>
             </children>
          </Pane>
-            <TextArea fx:id="sourceLangField" layoutX="83.0" layoutY="135.0" prefHeight="207.0" prefWidth="283.0" promptText="Type.." styleClass="speech-input" stylesheets="@../Utils/style.css" />
-            <TextArea fx:id="toLangField" layoutX="365.0" layoutY="135.0" prefHeight="207.0" prefWidth="283.0" styleClass="speech-input" stylesheets="@../Utils/style.css" />
-         <Button fx:id="translateBtn" layoutX="312.0" layoutY="352.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="trans-button" stylesheets="@../Utils/style.css" text="Dịch">
+            <TextArea fx:id="sourceLangField" layoutX="65.0" layoutY="135.0" prefHeight="207.0" prefWidth="323.0" promptText="Type.." styleClass="speech-input" stylesheets="@../Utils/style.css" />
+            <TextArea fx:id="toLangField" layoutX="387.0" layoutY="135.0" prefHeight="207.0" prefWidth="323.0" styleClass="speech-input" stylesheets="@../Utils/style.css" />
+         <Button fx:id="translateBtn" layoutX="335.0" layoutY="352.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="trans-button" stylesheets="@../Utils/style.css" text="Dịch">
             <graphic>
                <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                   <image>
