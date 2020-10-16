@@ -86,6 +86,14 @@
                   <Image url="@../Utils/images/hero.jpg" />
                </image>
             </ImageView>
+            <Label fx:id="successAlert" alignment="CENTER" layoutX="141.0" layoutY="363.0" prefHeight="32.0" prefWidth="273.0" styleClass="success-alert" stylesheets="@../Utils/style.css" text="Thành công">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/icons/icons8_ok_48px.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             </children>
         </AnchorPane>
     </children>

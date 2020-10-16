@@ -3,8 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +15,7 @@
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="510.0" prefWidth="54.0" styleClass="menu" stylesheets="@../Utils/style.css">
             <children>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showSearchWordComponent" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+                <Button fx:id="searchWordBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -38,7 +36,7 @@
                         <Tooltip fx:id="tooltip1" text="Tra từ điển" />
                     </tooltip>
                 </Button>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showAddNewWordComponent" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+                <Button fx:id="addWordBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -59,7 +57,7 @@
                         <Tooltip fx:id="tooltip2" text="Thêm từ vựng mới" />
                     </tooltip>
                 </Button>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showTranslationComponent" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+                <Button fx:id="translateBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -80,7 +78,7 @@
                         <Tooltip fx:id="tooltip3" text="Phiên dịch" />
                     </tooltip>
                 </Button>
-            <Pane prefHeight="332.0" prefWidth="54.0" />
+            <Pane prefHeight="323.0" prefWidth="54.0" />
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                <font>
                   <Font name="System Bold" size="14.0" />
