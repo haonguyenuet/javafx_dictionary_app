@@ -78,7 +78,21 @@
                         <Tooltip fx:id="tooltip3" text="Phiên dịch" />
                     </tooltip>
                 </Button>
-            <Pane prefHeight="332.0" prefWidth="54.0" />
+            <Pane prefHeight="332.0" prefWidth="54.0">
+               <children>
+                  <Button fx:id="recycleButton" layoutX="5.0" mnemonicParsing="false" onAction="#handleOnClickRecycleButton" prefHeight="38.0" prefWidth="42.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+                     <tooltip>
+                        <Tooltip text="Recycle" />
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/icons/trash_can.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
             <Button fx:id="helpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleOnClickHelpButton" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                <font>
                   <Font name="System Bold" size="14.0" />

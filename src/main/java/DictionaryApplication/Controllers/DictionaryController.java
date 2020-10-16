@@ -65,6 +65,15 @@ public class DictionaryController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	@FXML
+	void handleOnClickRecycleButton(ActionEvent event) {
+		try {
+			AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/Views/recycleGui.fxml"));
+			setNode(anchorPane);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	private AnchorPane container;

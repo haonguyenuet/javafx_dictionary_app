@@ -17,6 +17,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -79,6 +82,9 @@ public class SearcherController implements Initializable {
 		}
 		if (list.isEmpty()) {
 			alerts.showAlertWarning("Not found" , "Rất tiếc từ điển không cung cấp từ này.");
+			//clear english word and explain area
+			englishWord.setText("");
+			explanation.setText("");
 		} else {
 			headerList.setText("Kết quả liên quan");
 			listResults.setItems(list);
@@ -148,11 +154,22 @@ public class SearcherController implements Initializable {
 		// option != null.
 		Optional<ButtonType> option = alertWarning.showAndWait();
 		if (option.get() == ButtonType.OK) {
+			try (FileWriter fileWriter = new FileWriter("src/main/resources/Utils/deleteWordFile.txt" , true);
+				 BufferedWriter buf = new BufferedWriter(fileWriter)) {
+				buf.write("\n" + "|" + dictionary.get(indexOfSelectedWord).getWordTarget() + "\n" + dictionary.get(indexOfSelectedWord).getWordExplain());
+			} catch (IOException e) {
+				System.out.println("IOException.");
+			} catch (NullPointerException e) {
+				System.out.println("Null Exception.");
+			}
 			dictionaryManagement.deleteWord(dictionary , indexOfSelectedWord , path);
 			// refresh after deleting word
 			refreshAfterDeleting();
 			// successfully
 			alerts.showAlertInfo("Information" , "Xóa thành công");
+			// add delete word into deleteWordFile
+
+
 		} else if (option.get() == ButtonType.CANCEL) {
 			alerts.showAlertInfo("Information" , "Thay đổi không được công nhận");
 		}
