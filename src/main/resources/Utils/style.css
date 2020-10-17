@@ -13,8 +13,10 @@
 }
 .menu-item:hover,
 .menu-item:selected{
- -fx-background-color: #ecf0f1;
+ -fx-background-color: #8e44ad;
  -fx-text-fill: #8e44ad;
+  -fx-background-radius: 30;
+  -fx-border-radius: 30;
 }
 .header{
    -fx-background-color: white;
@@ -25,7 +27,7 @@
     -fx-background-color:   #44008b;
     -fx-background-radius: 30;
     -fx-border-radius: 30;
-    -fx-effect: dropshadow(three-pass-box, #8c7ae6, 15, 0, 0, 3) ;
+    -fx-effect: dropshadow(three-pass-box, #8c7ae6, 15, 0, 0, 2) ;
 }
 .search-field{
   -fx-background-color: transparent;
@@ -46,20 +48,14 @@
 
 
 .edit-button, .delete-button,
-.volume-button, .save-button,
-.restore-button{
-    -fx-cursor: hand;
-    -fx-text-fill: #9f45b0;
-    -fx-background-color: #f5f6fa;
-    -fx-border-color: #a29bfe;
-    -fx-border-width : 1.5 1.5 0 0;
-}
-.save-button, .edit-button, .restore-button{
-     -fx-border-width : 1.5 1.5 0 1.5;
+.volume-button, .save-button{
+   -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-background-color: transparent;
+    -fx-border: none;
 }
 .edit-button:hover, .delete-button:hover,
-.volume-button:hover, .save-button:hover,
-.restore-button:hover{
+.volume-button:hover, .save-button:hover{
     -fx-background-color:  #dcdde1;
     -fx-scale-x: 1.02;
     -fx-scale-y: 1.02;
@@ -69,8 +65,15 @@
     -fx-text-fill: #9f45b0;
     -fx-font-size: 16px;
     -fx-border-color: #a29bfe;
-    -fx-background-radius: 3;
-    -fx-border-radius: 3;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+/*title*/
+.title{
+     -fx-background-color:   #44008b;
+     -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
+     -fx-background-radius: 3;
+     -fx-border-radius: 3;
 }
 
 /* Styling list-cell */
@@ -79,6 +82,8 @@
     -fx-font-size: 16;
     -fx-font-weight: 700;
     -fx-padding: 5;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
 }
 .list-cell:even {
     -fx-background-color: white;
@@ -133,11 +138,13 @@
 }
 /* styling add new word component */
 .english-word-input,
-.meaning-input, .speech-input{
+.meaning-input{
     -fx-text-fill: #9f45b0;
     -fx-border-color: #9f45b0;
     -fx-font-size: 14px;
-    -fx-border-width: 2;
+    -fx-border-width: 1.5;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
 }
 .add-button{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
@@ -154,7 +161,7 @@
     -fx-background-radius: 5px;
     -fx-font-size: 13px;
     -fx-font-weight: 700;
-    -fx-background-color:  #44008b;
+    -fx-background-color: linear-gradient(to bottom left, #44008b, #9f45b0);
     -fx-pref-width: 100px;
     -fx-pref-height: 25px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
@@ -169,16 +176,36 @@
     -fx-font-size: 14px;
     -fx-text-fill: #009432;
     -fx-background-color:  #CAF7D8;
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
 }
 .warning-alert{
     -fx-font-size: 12px;
     -fx-text-fill: #c41b1b;
     -fx-background-color:  #F8DADA;
+    -fx-background-radius: 2;
+    -fx-border-radius: 2;
 }
 /* translate component */
 .header-translate{
-    -fx-border-color: #9f45b0;
-    -fx-border-width: 2;
+    -fx-border-color:  #44008b;
+    -fx-border-width: 1.5;
+    -fx-background-radius: 7 7 0 0;
+    -fx-border-radius: 7 7 0 0;
+}
+.src-speech-field,.to-speech-field{
+    -fx-text-fill: #9f45b0;
+    -fx-border-color: #44008b;
+    -fx-font-size: 18px;
+    -fx-border-width: 1.5;
+}
+.src-speech-field{
+    -fx-background-radius: 0 0 0 7;
+    -fx-border-radius: 0 0 0 7;
+}
+.to-speech-field{
+    -fx-background-radius: 0 0 7 0;
+    -fx-border-radius: 0 0 7 0;
 }
 .switch-button{
     -fx-background-color: transparent;

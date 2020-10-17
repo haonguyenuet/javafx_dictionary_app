@@ -12,11 +12,16 @@
 <AnchorPane prefHeight="510.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApplication.Controllers.TranslationController">
     <Pane prefHeight="91.0" prefWidth="769.0" styleClass="header" stylesheets="@../Utils/style.css">
         <children>
-            <Label layoutX="155.0" layoutY="32.0" text="Thật tiện lợi khi chúng ta có thể phiên dịch ngay tại đây" textFill="#9f45b0">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="305.0" layoutY="26.0" prefHeight="40.0" prefWidth="189.0" text="DoubleH Team" textFill="#9f45b0">
                 <font>
                     <Font name="System Bold Italic" size="18.0" />
                 </font>
             </Label>
+         <ImageView fitHeight="99.0" fitWidth="76.0" layoutX="230.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../Utils/images/personOne.jpg" />
+            </image>
+         </ImageView>
             <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="741.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../Utils/icons/icons8_cancel_40px.png" />
@@ -27,11 +32,16 @@
                     <Image url="@../Utils/images/logo.png" />
                 </image>
             </ImageView>
+         <ImageView fitHeight="99.0" fitWidth="76.0" layoutX="495.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../Utils/images/personTwo.jpg" />
+            </image>
+         </ImageView>
         </children>
     </Pane>
     <AnchorPane layoutY="91.0" prefHeight="419.0" prefWidth="769.0">
         <children>
-            <Pane prefHeight="45.0" prefWidth="769.0" style="-fx-background-color: #44008b; -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
+            <Pane layoutX="2.0" prefHeight="45.0" prefWidth="764.0" styleClass="title" stylesheets="@../Utils/style.css">
                 <children>
                     <Label layoutX="20.0" prefHeight="45.0" prefWidth="391.0" text="Phiên dịch " textFill="#c67abb">
                         <font>
@@ -47,54 +57,58 @@
                     </Label>
                 </children>
             </Pane>
-         <Pane layoutX="65.0" layoutY="80.0" prefHeight="57.0" prefWidth="645.0" styleClass="header-translate" stylesheets="@../Utils/style.css">
+         <Pane layoutX="65.0" layoutY="80.0">
             <children>
-                  <Label fx:id="englishLabel" layoutX="104.0" layoutY="13.0" prefHeight="37.0" prefWidth="100.0" text="English" textFill="#c67abb">
-                      <font>
-                          <Font name="System Bold" size="16.0" />
-                      </font>
+               <Pane prefHeight="57.0" prefWidth="645.0" styleClass="header-translate" stylesheets="@../Utils/style.css">
+                  <children>
+                        <Label fx:id="englishLabel" layoutX="104.0" layoutY="13.0" prefHeight="37.0" prefWidth="100.0" text="English" textFill="#9f45b0">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        <graphic>
+                           <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../Utils/icons/icons8_great_britain_48px_1.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                        </Label>
+                        <Label fx:id="vietnameseLabel" layoutX="426.0" layoutY="14.0" prefHeight="37.0" prefWidth="130.0" text="Vietnamese" textFill="#9f45b0">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        <graphic>
+                           <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../Utils/icons/icons8_vietnam_48px.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                        </Label>
+                     <Button fx:id="switchToggle" layoutX="302.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleOnClickSwitchToggle" styleClass="switch-button" stylesheets="@../Utils/style.css">
+                        <graphic>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../Utils/icons/icons8_data_transfer_48px.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </Button>
+                  </children>
+               </Pane>
+                  <TextArea fx:id="sourceLangField" layoutY="55.0" prefHeight="207.0" prefWidth="323.0" promptText="Type.." styleClass="src-speech-field" stylesheets="@../Utils/style.css" />
+                  <TextArea fx:id="toLangField" layoutX="322.0" layoutY="55.0" prefHeight="207.0" prefWidth="323.0" styleClass="to-speech-field" stylesheets="@../Utils/style.css" />
+               <Button fx:id="translateBtn" layoutX="275.0" layoutY="272.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="trans-button" stylesheets="@../Utils/style.css" text="Dịch">
                   <graphic>
-                     <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@../Utils/icons/icons8_great_britain_48px_1.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-                  </Label>
-                  <Label fx:id="vietnameseLabel" layoutX="426.0" layoutY="14.0" prefHeight="37.0" prefWidth="130.0" text="Vietnamese" textFill="#c67abb">
-                      <font>
-                          <Font name="System Bold" size="16.0" />
-                      </font>
-                  <graphic>
-                     <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../Utils/icons/icons8_vietnam_48px.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-                  </Label>
-               <Button fx:id="switchToggle" layoutX="302.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleOnClickSwitchToggle" styleClass="switch-button" stylesheets="@../Utils/style.css">
-                  <graphic>
-                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../Utils/icons/icons8_data_transfer_48px.png" />
+                           <Image url="@../Utils/icons/icons8_arrow_64px.png" />
                         </image>
                      </ImageView>
                   </graphic>
                </Button>
             </children>
          </Pane>
-            <TextArea fx:id="sourceLangField" layoutX="65.0" layoutY="135.0" prefHeight="207.0" prefWidth="323.0" promptText="Type.." styleClass="speech-input" stylesheets="@../Utils/style.css" />
-            <TextArea fx:id="toLangField" layoutX="387.0" layoutY="135.0" prefHeight="207.0" prefWidth="323.0" styleClass="speech-input" stylesheets="@../Utils/style.css" />
-         <Button fx:id="translateBtn" layoutX="335.0" layoutY="352.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="trans-button" stylesheets="@../Utils/style.css" text="Dịch">
-            <graphic>
-               <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../Utils/icons/icons8_arrow_64px.png" />
-                  </image>
-               </ImageView>
-            </graphic>
-         </Button>
         </children>
     </AnchorPane>
 </AnchorPane>

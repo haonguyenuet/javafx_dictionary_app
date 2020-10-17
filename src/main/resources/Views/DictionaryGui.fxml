@@ -11,11 +11,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="509.0" prefWidth="819.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApplication.Controllers.DictionaryController">
+<AnchorPane prefHeight="509.0" prefWidth="829.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApplication.Controllers.DictionaryController">
     <children>
-        <VBox alignment="TOP_CENTER" prefHeight="510.0" prefWidth="54.0" styleClass="menu" stylesheets="@../Utils/style.css">
+        <VBox alignment="TOP_CENTER" prefHeight="510.0" prefWidth="60.0" styleClass="menu" stylesheets="@../Utils/style.css">
             <children>
-                <Button fx:id="searchWordBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+            <Pane prefHeight="11.0" prefWidth="60.0" />
+                <Button fx:id="searchWordBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -36,7 +37,7 @@
                         <Tooltip fx:id="tooltip1" text="Tra từ điển" />
                     </tooltip>
                 </Button>
-                <Button fx:id="addWordBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+                <Button fx:id="addWordBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -57,7 +58,7 @@
                         <Tooltip fx:id="tooltip2" text="Thêm từ vựng mới" />
                     </tooltip>
                 </Button>
-                <Button fx:id="translateBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
+                <Button fx:id="translateBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -78,27 +79,8 @@
                         <Tooltip fx:id="tooltip3" text="Phiên dịch" />
                     </tooltip>
                 </Button>
-            <Pane prefHeight="323.0" prefWidth="54.0" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="235.0" styleClass="menu-item" stylesheets="@../Utils/style.css">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Utils/icons/icons8_help_48px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <tooltip>
-                  <Tooltip fx:id="tooltip31" text="Help" />
-               </tooltip>
-            </Button>
             </children>
         </VBox>
-      <AnchorPane fx:id="container" layoutX="55.0" prefHeight="510.0" prefWidth="769.0" />
+      <AnchorPane fx:id="container" layoutX="60.0" prefHeight="510.0" prefWidth="769.0" />
     </children>
 </AnchorPane>

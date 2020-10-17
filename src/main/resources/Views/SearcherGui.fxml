@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
@@ -66,7 +65,7 @@
             <children>
                 <AnchorPane layoutX="264.0" prefHeight="415.0" prefWidth="500.0">
                     <children>
-                        <Pane prefHeight="45.0" prefWidth="500.0" style="-fx-background-color: #44008b; -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
+                        <Pane layoutX="2.0" prefHeight="45.0" prefWidth="495.0" styleClass="title" stylesheets="@../Utils/style.css">
                             <children>
                                 <Label layoutX="14.0" prefHeight="45.0" prefWidth="157.0" text="Định nghĩa" textFill="#c67abb">
                                     <font>
@@ -82,19 +81,19 @@
                                 </Label>
                             </children>
                         </Pane>
-                  <Pane layoutX="8.0" layoutY="59.0">
+                  <Pane layoutX="5.0" layoutY="52.0" prefHeight="352.0" prefWidth="490.0">
                      <children>
-                                <HBox fx:id="headerOfExplanation" alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="488.0">
+                                <HBox fx:id="headerOfExplanation" alignment="CENTER_LEFT" layoutY="4.0" prefHeight="35.0" prefWidth="488.0">
                                     <children>
                                         <Label fx:id="englishWord" prefHeight="35.0" prefWidth="281.0" text="Home" textFill="#9f45b0">
                                             <font>
-                                                <Font name="System Bold" size="16.0" />
+                                                <Font name="System Bold" size="18.0" />
                                             </font>
                                             <padding>
                                                 <Insets left="5.0" />
                                             </padding>
                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../Utils/icons/icons8_brick_64px.png" />
                                                     </image>
@@ -103,7 +102,7 @@
                                         </Label>
                               <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#handleClickSaveBtn" prefHeight="35.0" prefWidth="84.0" styleClass="save-button" stylesheets="@../Utils/style.css" text="Save">
                                  <graphic>
-                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../Utils/icons/icons8_save_64px.png" />
                                        </image>
@@ -112,7 +111,7 @@
                               </Button>
                                         <Button fx:id="editBtn" mnemonicParsing="false" onAction="#handleClickEditBtn" prefHeight="35.0" prefWidth="35.0" styleClass="edit-button" stylesheets="@../Utils/style.css">
                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="editBtn">
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="editBtn">
                                                     <image>
                                                         <Image url="@../Utils/icons/icons8_edit_64px.png" />
                                                     </image>
@@ -124,7 +123,7 @@
                                         </Button>
                                         <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#handleClickDeleteBtn" prefHeight="35.0" prefWidth="35.0" styleClass="delete-button" stylesheets="@../Utils/style.css">
                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../Utils/icons/icons8_delete_bin_64px.png" />
                                                     </image>
@@ -136,7 +135,7 @@
                                         </Button>
                                         <Button fx:id="soundBtn" mnemonicParsing="false" onAction="#handleClickSoundBtn" prefHeight="35.0" prefWidth="35.0" styleClass="volume-button" stylesheets="@../Utils/style.css">
                                             <graphic>
-                                                <ImageView fitHeight="25.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                                     <image>
                                                         <Image url="@../Utils/icons/icons8_speaker_64px.png" />
                                                     </image>
@@ -145,15 +144,14 @@
                                         </Button>
                                     </children>
                                 </HBox>
-                                <TextArea fx:id="explanation" layoutY="35.0" prefHeight="310.0" prefWidth="490.0" styleClass="explanation-field" stylesheets="@../Utils/style.css" text="Explain" />
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                <TextArea fx:id="explanation" layoutY="45.0" prefHeight="307.0" prefWidth="490.0" styleClass="explanation-field" stylesheets="@../Utils/style.css" text="Explain" />
                      </children>
                   </Pane>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="searchResult" prefHeight="413.0" prefWidth="264.0">
+                <AnchorPane fx:id="searchResult" layoutX="2.0" prefHeight="407.0" prefWidth="263.0">
                     <children>
-                        <Pane prefHeight="45.0" prefWidth="261.0" style="-fx-background-color: #44008b; -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
+                        <Pane prefHeight="45.0" prefWidth="261.0" styleClass="title" stylesheets="@../Utils/style.css">
                             <children>
                                 <Label fx:id="headerList" layoutX="18.0" prefHeight="45.0" prefWidth="230.0" text="15 kết quả liên quan" textFill="#c67abb">
                                     <font>
@@ -169,8 +167,7 @@
                                 </Label>
                             </children>
                         </Pane>
-                        <ListView fx:id="listResults" layoutY="45.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleMouseClickAWord" prefHeight="369.0" prefWidth="261.0" styleClass="list-cell" stylesheets="@../Utils/style.css" />
-                        <Separator layoutX="258.0" orientation="VERTICAL" prefHeight="412.0" prefWidth="5.0" style="-fx-background-color: #bdc3c7;" />
+                        <ListView fx:id="listResults" layoutX="1.0" layoutY="51.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleMouseClickAWord" prefHeight="352.0" prefWidth="261.0" styleClass="list-cell" stylesheets="@../Utils/style.css" />
                     </children>
                 </AnchorPane>
             </children>
