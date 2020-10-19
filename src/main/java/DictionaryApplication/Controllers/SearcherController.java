@@ -26,30 +26,32 @@ import java.util.ResourceBundle;
 public class SearcherController implements Initializable {
 	private Dictionary dictionary = new Dictionary();
 	private DictionaryManagement dictionaryManagement = new DictionaryManagement();
-	private int indexOfSelectedWord;
 	private final String path = "src/main/resources/Utils/data.txt";
 	// list for listView
 	ObservableList<String> list = FXCollections.observableArrayList();
 	// alerts
 	private Alerts alerts = new Alerts();
+	// index of selected word
+	private int indexOfSelectedWord;
+	// the first index of list found
+	private int firstIndexOfListFound = 0;
 
 	@Override
 	public void initialize( URL url , ResourceBundle resourceBundle ) {
 		// get data for dictionary from data.txt file
 		dictionaryManagement.insertFromFile(dictionary , path);
+		System.out.println(dictionary.size());
 		// set data for trie
 		dictionaryManagement.setTrie(dictionary);
-		// set initial word list and definition are displayed
-		setListDefault();
-		englishWord.setText(dictionary.get(0).getWordTarget());
-		explanation.setText(dictionary.get(0).getWordExplain());
+		// set initial word list and definition
+		setListDefault(0);
 		// when user types in search field
 		searchTerm.setOnKeyTyped(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle( KeyEvent keyEvent ) {
 				if (searchTerm.getText().isEmpty()) {
 					cancelBtn.setVisible(false);
-					setListDefault();
+					setListDefault(0);
 				} else {
 					cancelBtn.setVisible(true);
 					handleOnKeyTyped();
@@ -63,7 +65,7 @@ public class SearcherController implements Initializable {
 				searchTerm.clear();
 				notAvailableAlert.setVisible(false);
 				cancelBtn.setVisible(false);
-				setListDefault();
+				setListDefault(0);
 			}
 		});
 		// initial state
@@ -85,11 +87,13 @@ public class SearcherController implements Initializable {
 		list = dictionaryManagement.lookupWord(dictionary , searchKey);
 		if (list.isEmpty()) {
 			notAvailableAlert.setVisible(true);
-			setListDefault();
+			setListDefault(firstIndexOfListFound);
 		} else {
 			notAvailableAlert.setVisible(false);
-			headerList.setText("Kết quả liên quan");
+			headerList.setText("Kết quả");
 			listResults.setItems(list);
+			// set the first index of list found
+			firstIndexOfListFound = dictionaryManagement.searchWord(dictionary,list.get(0));
 		}
 	}
 
@@ -143,7 +147,7 @@ public class SearcherController implements Initializable {
 			dictionaryManagement.updateWord(dictionary , indexOfSelectedWord , explanation.getText() , path);
 			// successfully
 			alerts.showAlertInfo("Information" , "Cập nhập thành công!");
-		} else if (option.get() == ButtonType.CANCEL) {
+		} else{
 			alerts.showAlertInfo("Information" , "Thay đổi không được công nhận!");
 		}
 		// update status
@@ -163,7 +167,7 @@ public class SearcherController implements Initializable {
 			refreshAfterDeleting();
 			// successfully
 			alerts.showAlertInfo("Information" , "Xóa thành công");
-		} else if (option.get() == ButtonType.CANCEL) {
+		} else {
 			alerts.showAlertInfo("Information" , "Thay đổi không được công nhận");
 		}
 	}
@@ -180,23 +184,26 @@ public class SearcherController implements Initializable {
 		headerOfExplanation.setVisible(false);
 		explanation.setVisible(false);
 	}
-	private void setListDefault(){
-		headerList.setText("15 Từ đầu tiên");
+	private void setListDefault(int index){
+		if(index == 0){
+			headerList.setText("15 Từ đầu tiên");
+		}else{
+			headerList.setText("Kết quả liên quan");
+		}
 		list.clear();
-		for (int i = 0; i < 15; i++) {
+		for (int i = index; i < index + 15; i++) {
 			list.add(dictionary.get(i).getWordTarget());
 		}
 		listResults.setItems(list);
+		englishWord.setText(dictionary.get(index).getWordTarget());
+		explanation.setText(dictionary.get(index).getWordExplain());
 	}
 	// FXML elements
 	@FXML
 	private TextField searchTerm;
 
 	@FXML
-	private Button  saveBtn,cancelBtn;
-
-	@FXML
-	private ImageView closeBtn;
+	private Button  cancelBtn, saveBtn, closeBtn;
 
 	@FXML
 	private Label englishWord, headerList, notAvailableAlert;
@@ -208,5 +215,5 @@ public class SearcherController implements Initializable {
 	private ListView<String> listResults;
 
 	@FXML
-	private HBox headerOfExplanation;
+	private Pane headerOfExplanation;
 }

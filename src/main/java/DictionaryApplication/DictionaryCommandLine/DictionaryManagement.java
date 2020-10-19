@@ -3,12 +3,14 @@ package DictionaryApplication.DictionaryCommandLine;
 import DictionaryApplication.Trie.Trie;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.io.*;
 
 import java.util.*;
 
 public class DictionaryManagement {
 	private Trie trie = new Trie();
+
 	/**
 	 * Insert from text file use BufferedReader
 	 */
@@ -60,15 +62,21 @@ public class DictionaryManagement {
 		}
 	}
 
+	/**
+	 * using trie algorithm for search prefix
+	 */
 	public ObservableList<String> lookupWord( Dictionary dictionary , String key ) {
 		ObservableList<String> list = FXCollections.observableArrayList();
 		try {
 			List<String> results = trie.autoComplete(key);
-			for (int i = 0; i < 15; i++) {
-				list.add(results.get(i));
+			if (results != null) {
+				int length = Math.min(results.size() , 15);
+				for (int i = 0; i < length; i++) {
+					list.add(results.get(i));
+				}
 			}
 		} catch (Exception e) {
-
+			System.out.println("Something went wrong: " + e);
 		}
 		return list;
 	}
@@ -113,6 +121,8 @@ public class DictionaryManagement {
 	public void deleteWord( Dictionary dictionary , int index , String path ) {
 		try {
 			dictionary.remove(index);
+			trie = new Trie();
+			setTrie(dictionary);
 			exportToFile(dictionary , path);
 		} catch (NullPointerException e) {
 			System.out.println("Null Exception.");
@@ -122,8 +132,8 @@ public class DictionaryManagement {
 	public void addWord( Word word , String path ) {
 		try (FileWriter fileWriter = new FileWriter(path , true);
 			 BufferedWriter buf = new BufferedWriter(fileWriter)) {
-			 buf.write("|" + word.getWordTarget() + "\n" + word.getWordExplain());
-			 buf.newLine();
+			buf.write("|" + word.getWordTarget() + "\n" + word.getWordExplain());
+			buf.newLine();
 		} catch (IOException e) {
 			System.out.println("IOException.");
 		} catch (NullPointerException e) {
@@ -132,24 +142,24 @@ public class DictionaryManagement {
 	}
 
 	// async
-	public void setTimeout(Runnable runnable, int delay){
+	public void setTimeout( Runnable runnable , int delay ) {
 		new Thread(() -> {
 			try {
 				Thread.sleep(delay);
 				runnable.run();
-			}
-			catch (Exception e){
+			} catch (Exception e) {
 				System.err.println(e);
 			}
 		}).start();
 	}
+
 	// insert dictionary to trie
-	public void setTrie(Dictionary dictionary){
-		try{
-			for(Word word : dictionary){
+	public void setTrie( Dictionary dictionary ) {
+		try {
+			for (Word word : dictionary) {
 				trie.insert(word.getWordTarget());
 			}
-		}catch (NullPointerException e){
+		} catch (NullPointerException e) {
 			System.out.println("Something went wrong: " + e);
 		}
 	}

@@ -54,7 +54,7 @@ public class TranslationController implements Initializable {
 		translateBtn.setDisable(true);
 		toLangField.setEditable(false);
 		// click close button
-		closeButton.setOnMouseClicked(e -> {
+		closeBtn.setOnMouseClicked(e -> {
 			System.exit(0);
 		});
 
@@ -70,7 +70,7 @@ public class TranslationController implements Initializable {
 		String urlString = rootAPI + srcText;
 		urlString = urlString.replace(" ", "%20");
 
-		// initialize connection
+		// create connection
 		URL url = new URL(urlString);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
@@ -80,7 +80,7 @@ public class TranslationController implements Initializable {
 		BufferedReader in = new BufferedReader(
 				new InputStreamReader(con.getInputStream()));
 		String line;
-		StringBuffer content = new StringBuffer();
+		StringBuilder content = new StringBuilder();
 		while ((line = in.readLine()) != null) {
 			content.append(line);
 		}
@@ -119,13 +119,10 @@ public class TranslationController implements Initializable {
 	}
 
 	@FXML
-	private ImageView closeButton;
-
-	@FXML
 	private TextArea sourceLangField, toLangField;
 
 	@FXML
-	private Button translateBtn, switchToggle;
+	private Button translateBtn, closeBtn;
 
 	@FXML
 	private Label englishLabel , vietnameseLabel;

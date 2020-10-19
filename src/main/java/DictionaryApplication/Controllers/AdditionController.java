@@ -9,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
@@ -55,7 +54,7 @@ public class AdditionController implements Initializable {
 		//initial state
 		successAlert.setVisible(false);
 		// on click close button
-		closeButton.setOnMouseClicked(e -> {
+		closeBtn.setOnMouseClicked(e -> {
 			System.exit(0);
 		});
 
@@ -78,11 +77,11 @@ public class AdditionController implements Initializable {
 				// show confirmation alert
 				Alert selectionAlert = alerts.alertConfirmation("This word already exists" ,
 						"Từ này đã tồn tại.\n" +
-								"bạn có thể thay thế hoặc chèn thêm nghĩa cũ với nghĩa vừa nhập");
+								"Thay thế hoặc bổ sung nghĩa vừa nhập cho nghĩa cũ.");
 				// custom button
 				selectionAlert.getButtonTypes().clear();
 				ButtonType replaceBtn = new ButtonType("Thay thế");
-				ButtonType insertBtn = new ButtonType("Chèn thêm");
+				ButtonType insertBtn = new ButtonType("Bổ sung");
 				selectionAlert.getButtonTypes().addAll(replaceBtn , insertBtn , ButtonType.CANCEL);
 				Optional<ButtonType> selection = selectionAlert.showAndWait();
 
@@ -123,11 +122,8 @@ public class AdditionController implements Initializable {
 		// automatic hide success alert
 		dictionaryManagement.setTimeout(() -> successAlert.setVisible(false) , 1500);
 	}
-
 	@FXML
-	private ImageView closeButton;
-	@FXML
-	private Button addBtn;
+	private Button addBtn, closeBtn;
 	@FXML
 	private TextField wordTargetInput;
 	@FXML

@@ -19,17 +19,21 @@
                         <Font name="System Bold Italic" size="20.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="closeButton" fitHeight="20.0" fitWidth="20.0" layoutX="741.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                <Button fx:id="closeBtn" layoutX="740.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="close-button" stylesheets="@../Utils/style.css">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../Utils/icons/icons8_cancel_40px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <ImageView fitHeight="91.0" fitWidth="137.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../Utils/icons/icons8_cancel_40px.png" />
+                        <Image url="@../Utils/images/hero4.jpg" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="120.0" fitWidth="110.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../Utils/images/logo.png" />
-                    </image>
-                </ImageView>
-            <Label layoutX="288.0" layoutY="46.0" prefHeight="30.0" prefWidth="228.0" text="Chúc bạn mọi điều tốt đẹp" textFill="#9f45b0">
+            <Label layoutX="288.0" layoutY="45.0" prefHeight="30.0" prefWidth="212.0" text="Chúc bạn mọi điều tốt đẹp" textFill="#9f45b0">
                <font>
                   <Font name="System Italic" size="18.0" />
                </font>
@@ -79,7 +83,7 @@
                         </ImageView>
                     </graphic>
                 </Label>
-                <TextArea fx:id="explanationInput" layoutX="31.0" layoutY="155.0" prefHeight="200.0" prefWidth="386.0" promptText="Nhập giải nghĩa của từ...." styleClass="meaning-input" stylesheets="@../Utils/style.css" />
+                <TextArea fx:id="explanationInput" layoutX="31.0" layoutY="155.0" prefHeight="200.0" prefWidth="386.0" promptText="Nhập giải nghĩa của từ...." styleClass="meaning-input" stylesheets="@../Utils/style.css" wrapText="true" />
                 <Button fx:id="addBtn" layoutX="31.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleClickAddBtn" prefHeight="32.0" prefWidth="60.0" styleClass="add-button" stylesheets="@../Utils/style.css" text="Thêm " />
             <ImageView fitHeight="297.0" fitWidth="296.0" layoutX="435.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);">
                <image>
