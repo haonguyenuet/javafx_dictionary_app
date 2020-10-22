@@ -25,7 +25,7 @@ public class DictionaryManagement {
 
 			while ((line = buf.readLine()) != null) {
 				Word word = new Word();
-				word.setWordTarget(englishWord);
+				word.setWordTarget(englishWord.trim());
 				// initialize meaning
 				String meaning = line + "\n";
 				while ((line = buf.readLine()) != null) {
