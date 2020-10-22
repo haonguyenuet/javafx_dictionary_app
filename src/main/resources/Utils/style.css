@@ -1,27 +1,33 @@
 @font-face {
     src: url("fonts/Poppins-Regular.ttf"),
 }
+
+.root{
+     -fx-background-color: linear-gradient(to top right,#752e65, #44008b);
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
+}
+.container{
+    -fx-background-color:  #fff;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
 .menu{
-    -fx-background-color: linear-gradient(to bottom left, #44008b,#833471);
     -fx-padding: 0;
 }
 .menu-item{
  -fx-background-color: transparent;
- -fx-text-fill: #ecf0f1;
- -fx-background-radius: 0;
-
+ -fx-background-radius: 30;
+ -fx-padding: 0 0 0 10;
+ -fx-background-insets: 0;
+ -fx-text-fill: #fff;
+ -fx-font-weight: bold;
+ -fx-font-family: "Poppins";
 }
 .menu-item:hover,
-.menu-item:selected{
- -fx-background-color: #8e44ad;
- -fx-text-fill: #8e44ad;
-  -fx-background-radius: 30;
-  -fx-border-radius: 30;
+.menu-item:focused{
+ -fx-background-color: #c6a1d6;
 }
-.header{
-   -fx-background-color: white;
-}
-
 /* search box */
 .search-box{
     -fx-background-color:   #44008b;
@@ -46,17 +52,17 @@
     -fx-cursor: hand;
 }
 /* explanation */
-.definition-wrapper, .list-wrapper{
+.definition-wrapper{
     -fx-border-width: 1.5;
-    -fx-background-radius: 6;
-    -fx-border-radius: 6;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
     -fx-background-color: white;
-    -fx-effect: dropshadow(three-pass-box, #4f2258, 3, 0, 0, 1.5) ;
+    -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1.5) ;
 }
 .explanation-field{
     -fx-background-color: transparent;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
     -fx-border-width: 0;
     -fx-text-fill: #9f45b0;
     -fx-font-size: 16px;
@@ -76,12 +82,13 @@
     -fx-effect: dropshadow(three-pass-box, #718093, 2, 0, 0, 1) ;
 }
 .edit-button:hover, .delete-button:hover,
-.volume-button:hover, .save-button:hover{
-    -fx-background-color:  #dfdfdf;
+.volume-button:hover{
+    -fx-background-color: #edeff1;
+    -fx-effect: dropshadow(three-pass-box, #2b2b2b, 3, 0, 0, 1) ;
 }
 .edit-button:pressed, .delete-button:pressed,
 .volume-button:pressed{
-    -fx-effect: dropshadow(three-pass-box, #4f2258, 2, 0, 0, 1) ;
+    -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1) ;
 }
 .save-button{
     -fx-background-color: #e1efdb;
@@ -102,9 +109,8 @@
 .title{
      -fx-background-color:   #44008b;
      -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
-     -fx-background-radius: 2;
-     -fx-border-radius: 2;
-     -fx-font-size: 18px;
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
 }
 
 /* Styling list-cell */
@@ -113,11 +119,12 @@
     -fx-font-size: 16;
     -fx-font-weight: 700;
     -fx-padding: 5;
-    -fx-background-radius: 3;
-    -fx-border-radius: 3;
 }
-.list-cell:even {
-    -fx-background-color: white;
+.list-cell:even{
+    -fx-background-color: #f5f6fa;
+}
+.list-cell:odd {
+    -fx-background-color: #edeef0;
 }
 .list-cell:filled:hover,
 .list-cell:filled:selected{
@@ -247,13 +254,14 @@
     -fx-background-color: #dfe6e9;
 }
 
-/* close button*/
-.close-button{
-    -fx-pref-width: 25px;
-    -fx-pref-height: 25px;
-    -fx-background-color: transparent;
-    -fx-padding: 0;
+.exit-button{
+     -fx-background-color: transparent;
+     -fx-background-radius: 30;
+     -fx-background-insets: 0;
+     -fx-text-fill: #fff;
+     -fx-font-weight: bold;
+     -fx-font-family: "Poppins";
 }
-.close-button:hover{
-    -fx-background-color:  #F8DADA;
+.exit-button:hover{
+     -fx-background-color: #b22a00;
 }

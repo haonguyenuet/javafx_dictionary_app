@@ -53,11 +53,6 @@ public class AdditionController implements Initializable {
 
 		//initial state
 		successAlert.setVisible(false);
-		// on click close button
-		closeBtn.setOnMouseClicked(e -> {
-			System.exit(0);
-		});
-
 	}
 
 	@FXML
@@ -123,7 +118,7 @@ public class AdditionController implements Initializable {
 		dictionaryManagement.setTimeout(() -> successAlert.setVisible(false) , 1500);
 	}
 	@FXML
-	private Button addBtn, closeBtn;
+	private Button addBtn;
 	@FXML
 	private TextField wordTargetInput;
 	@FXML

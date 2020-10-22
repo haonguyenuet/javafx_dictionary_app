@@ -10,37 +10,32 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="510.0" prefWidth="765.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApplication.Controllers.AdditionController">
+<AnchorPane prefHeight="510.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DictionaryApplication.Controllers.AdditionController">
     <children>
-        <Pane prefHeight="91.0" prefWidth="769.0" styleClass="header" stylesheets="@../Utils/style.css">
+        <Pane layoutX="3.0" prefHeight="91.0" prefWidth="764.0" styleClass="header" stylesheets="@../Utils/style.css">
             <children>
-                <Label layoutX="291.0" layoutY="24.0" prefHeight="30.0" prefWidth="221.0" text="Wish you all the best" textFill="#9f45b0">
-                    <font>
-                        <Font name="System Bold Italic" size="20.0" />
-                    </font>
-                </Label>
-                <Button fx:id="closeBtn" layoutX="740.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" styleClass="close-button" stylesheets="@../Utils/style.css">
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../Utils/icons/icons8_cancel_40px.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <ImageView fitHeight="91.0" fitWidth="137.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+            <Pane layoutX="316.0" layoutY="20.0">
+               <children>
+                      <Label layoutX="3.0" prefHeight="30.0" prefWidth="221.0" text="Wish you all the best" textFill="#9f45b0">
+                          <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                          </font>
+                      </Label>
+                  <Label layoutY="21.0" prefHeight="30.0" prefWidth="212.0" text="Chúc bạn mọi điều tốt đẹp" textFill="#9f45b0">
+                     <font>
+                        <Font name="System Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+                <ImageView fitHeight="78.0" fitWidth="110.0" layoutX="206.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Utils/images/hero4.jpg" />
                     </image>
                 </ImageView>
-            <Label layoutX="288.0" layoutY="45.0" prefHeight="30.0" prefWidth="212.0" text="Chúc bạn mọi điều tốt đẹp" textFill="#9f45b0">
-               <font>
-                  <Font name="System Italic" size="18.0" />
-               </font>
-            </Label>
             </children>
         </Pane>
-        <AnchorPane layoutY="91.0" prefHeight="419.0" prefWidth="769.0">
+        <AnchorPane layoutY="91.0" prefHeight="421.0" prefWidth="769.0">
             <children>
                 <Pane layoutX="2.0" prefHeight="45.0" prefWidth="764.0" styleClass="title" stylesheets="@../Utils/style.css">
                     <children>

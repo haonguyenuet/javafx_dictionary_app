@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -21,7 +22,7 @@ public class App extends Application {
 	public void start( final Stage stage ) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/Views/DictionaryGui.fxml"));
 		stage.setTitle("Dictionary app");
-		stage.initStyle(StageStyle.UNDECORATED);
+		stage.initStyle(StageStyle.TRANSPARENT);
 		root.setOnMousePressed(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle( MouseEvent event ) {
@@ -39,6 +40,7 @@ public class App extends Application {
 		});
 
 		Scene scene = new Scene(root);
+		scene.setFill(Color.TRANSPARENT);
 		stage.setScene(scene);
 		stage.show();
 	}

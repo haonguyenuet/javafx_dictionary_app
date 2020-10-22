@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -73,10 +74,6 @@ public class SearcherController implements Initializable {
 		saveBtn.setVisible(false);
 		cancelBtn.setVisible(false);
 		notAvailableAlert.setVisible(false);
-		// close app
-		closeBtn.setOnMouseClicked(e -> {
-			System.exit(0);
-		});
 	}
 
 	// click search button
@@ -140,7 +137,7 @@ public class SearcherController implements Initializable {
 	@FXML
 	private void handleClickSaveBtn() {
 		Alert alertConfirmation = alerts.alertConfirmation("Update" ,
-				"Bạn chắc chắn muốn cập nhật nghĩa từ này??");
+				"Bạn chắc chắn muốn cập nhật nghĩa từ này ?");
 		// option != null.
 		Optional<ButtonType> option = alertConfirmation.showAndWait();
 		if (option.get() == ButtonType.OK) {
@@ -159,6 +156,7 @@ public class SearcherController implements Initializable {
 	private void handleClickDeleteBtn() {
 		Alert alertWarning = alerts.alertWarning("Delete" , "Bạn chắc chắn muốn xóa từ này?");
 		// option != null.
+		alertWarning.getButtonTypes().add(ButtonType.CANCEL);
 		Optional<ButtonType> option = alertWarning.showAndWait();
 		if (option.get() == ButtonType.OK) {
 			// delete selected word from dictionary
@@ -203,7 +201,7 @@ public class SearcherController implements Initializable {
 	private TextField searchTerm;
 
 	@FXML
-	private Button  cancelBtn, saveBtn, closeBtn;
+	private Button  cancelBtn, saveBtn, volumeBtn;
 
 	@FXML
 	private Label englishWord, headerList, notAvailableAlert;

@@ -53,11 +53,6 @@ public class TranslationController implements Initializable {
 		//initial state
 		translateBtn.setDisable(true);
 		toLangField.setEditable(false);
-		// click close button
-		closeBtn.setOnMouseClicked(e -> {
-			System.exit(0);
-		});
-
 	}
 
 	@FXML
@@ -122,7 +117,7 @@ public class TranslationController implements Initializable {
 	private TextArea sourceLangField, toLangField;
 
 	@FXML
-	private Button translateBtn, closeBtn;
+	private Button translateBtn;
 
 	@FXML
 	private Label englishLabel , vietnameseLabel;

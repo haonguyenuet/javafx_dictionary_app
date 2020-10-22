@@ -43,6 +43,10 @@ public class DictionaryController implements Initializable {
 		tooltip2.setShowDelay(Duration.seconds(0.5));
 		tooltip3.setShowDelay(Duration.seconds(0.5));
 		showComponent("/Views/SearcherGui.fxml");
+		// close app
+		closeBtn.setOnMouseClicked(e -> {
+			System.exit(0);
+		});
 	}
 
 	private void setNode( Node node ) {
@@ -64,7 +68,7 @@ public class DictionaryController implements Initializable {
 	private Tooltip tooltip1, tooltip2, tooltip3;
 
 	@FXML
-	private Button addWordBtn, translateBtn, searchWordBtn;
+	private Button addWordBtn, translateBtn, searchWordBtn, closeBtn;
 
 	@FXML
 	private AnchorPane container;
