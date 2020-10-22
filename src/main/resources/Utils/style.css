@@ -54,8 +54,8 @@
 /* explanation */
 .definition-wrapper{
     -fx-border-width: 1.5;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
     -fx-background-color: white;
     -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1.5) ;
 }
@@ -119,19 +119,25 @@
     -fx-font-size: 16;
     -fx-font-weight: 700;
     -fx-padding: 5;
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+     -fx-background-radius: 5;
+     -fx-border-radius: 5;
+}
+.list-cell:even, .list-cell:odd{
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
 }
 .list-cell:even{
-    -fx-background-color: #f5f6fa;
+     -fx-background-color: #f5f6fa;
 }
 .list-cell:odd {
-    -fx-background-color: #edeef0;
+    -fx-background-color: #eff0fb;
 }
 .list-cell:filled:hover,
 .list-cell:filled:selected{
     -fx-background-color: linear-gradient(to bottom left, #44008b, #9f45b0);
     -fx-text-fill: white;
 }
-
 /* Styling scroll-bar */
 .list-cell .scroll-bar:horizontal .track,
 .list-cell .scroll-bar:vertical .track ,

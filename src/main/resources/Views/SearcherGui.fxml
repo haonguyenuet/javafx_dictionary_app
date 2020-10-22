@@ -178,7 +178,7 @@
                                 </Label>
                             </children>
                         </Pane>
-                        <ListView fx:id="listResults" layoutX="1.5" layoutY="48.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleMouseClickAWord" prefHeight="358.0" prefWidth="263.0" styleClass="list-cell" stylesheets="@../Utils/style.css" />
+                        <ListView fx:id="listResults" layoutX="1.5" layoutY="51.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#handleMouseClickAWord" prefHeight="355.0" prefWidth="260.0" styleClass="list-cell" stylesheets="@../Utils/style.css" />
                     </children>
                 </AnchorPane>
             </children>
