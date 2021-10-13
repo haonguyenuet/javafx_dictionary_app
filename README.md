@@ -11,7 +11,7 @@ This is big project of DoubleH team
     - FreeTTS Lib
     - Json-Simple Lib
 ### Preview:
-    ![alt](src/main/resources/Utils/images/preview.png)
+    ![Banner](https://github.com/haonguyenuet/dictionary-app-javafx/blob/master/src/main/resources/Utils/images/preview.png)
 
    
      
